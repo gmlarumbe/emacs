@@ -4919,11 +4919,8 @@ Key bindings:
     (set (make-local-variable 'compilation-error-regexp-alist) nil)
     (set (make-local-variable 'compilation-file-regexp-alist) nil))
 
-  ;; DANGER: Custom Imenu
   ;; add index menu
-  ;; (vhdl-index-menu-init)
-  (larumbe/vhdl-index-menu-init)
-  ;; End of DANGER
+  (vhdl-index-menu-init)
   ;; add source file menu
   (if vhdl-source-file-menu (vhdl-add-source-files-menu))
   ;; add VHDL menu
@@ -13684,11 +13681,7 @@ This does background highlighting of translate-off regions.")
          (when vhdl-highlight-translate-off vhdl-font-lock-keywords-5))))
 
 ;; initialize fontification for VHDL Mode
-;; DANGER: ONLY EXECUTED AT EMACS STARTUP!!
-(if larumbe/vhdl-use-own-custom-fontify ; Must be defined @ vhdl-settings use-package :init
-    (larumbe/vhdl-font-lock-init)
-  (vhdl-font-lock-init))
-;; End of DANGER
+(vhdl-font-lock-init)
 
 (defun vhdl-fontify-buffer ()
   "Re-initialize fontification and fontify buffer."
